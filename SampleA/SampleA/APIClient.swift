@@ -9,23 +9,23 @@
 import Foundation
 import Alamofire
 
-typealias APIHandler = (NSError?) -> Void
 typealias URLParameters = [String: Any]
+typealias APIClientImageSearchHandler = ([SearchAPIImage]? , NSError?) -> Void
 
 enum APIEndpoint {
-    case example(String)
+    case search(String)
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .example:
+        case .search:
             return .get
         }
     }
     
     var path: String? {
         switch self {
-        case .example(let params):
-            return "/example"
+        case .search( _):
+            return nil
         }
     }
 }
@@ -35,7 +35,7 @@ class URLRequestFactory {
         let mutableURLRequest = constructDefaultURL(endPoint)
         let params = parametersForEndpoint(endPoint)
         do {
-            return try Alamofire.JSONEncoding.default.encode(mutableURLRequest, with: params)
+            return try Alamofire.URLEncoding.default.encode(mutableURLRequest, with: params)
         }
         catch {
             //  FIXME: - may want to do soem error handling here
@@ -48,6 +48,7 @@ class URLRequestFactory {
         if let path = endPoint.path {
             url = url.appendingPathComponent(path)
         }
+        
         var mutableURLRequest = Foundation.URLRequest(url: url)
         mutableURLRequest.httpMethod = endPoint.method.rawValue
         return mutableURLRequest
@@ -55,18 +56,24 @@ class URLRequestFactory {
     
     private func parametersForEndpoint(_ endPoint: APIEndpoint) -> URLParameters {
         var params: URLParameters = URLParameters()
+        params["api_key"] = "3e7cc266ae2b0e0d78e279ce8e361736" // FIXME: - this should be more at a class level for all requests
+        params["format"] = "json"
+        params["nojsoncallback"] = 1
+        params["safe_search"] = 1
         
         switch endPoint {
             
-        case .example(let exampleParameter):
-            // add any URL parameters
+        case .search(let search):
+               //?method=flickr.photos.search&api_key=3e7cc266ae2b0e0d78e279ce8e361736&format=json&nojsoncallback=1&safe_search=1&text=dog
+            params["method"] = "flickr.photos.search" //  FIXME: - abstract this method stuff out so other actions can be queried on API
+            params["text"] = search //   FIXME: - do we need any cleaning or scrubbing of this search input
             break
         }
         return params
     }
     
     private func baseURL() -> String {
-        return "http://localhost/api/v1"
+        return "https://api.flickr.com/services/rest/"
     }
 }
 
@@ -74,20 +81,23 @@ class APIClient {
     var sessionManager: SessionManager = SessionManager()
     var urlRequestFactory = URLRequestFactory()
     
-    func exampleRequest(handler: @escaping APIHandler) {
-        let urlRequest = urlRequestFactory.constructRequest(for: .example("foobar"))
-        
+    func searchForImages(searchText: String, handler: @escaping APIClientImageSearchHandler) {
+        let urlRequest = urlRequestFactory.constructRequest(for: .search(searchText))
+        print("url: \(urlRequest.url?.absoluteString)")
         sessionManager.request(urlRequest).responseJSON { response in
             switch response.result {
             case .success(let json):
-                if let json = json as? NSDictionary {
-                    
+                if let json = json as? NSDictionary, let responseModel = SearchAPIImageResponseModel.from(json) {
+                    print("responseMode: \(responseModel)")
+                    handler(responseModel.images, nil)
                 }
                 else {
-                    
+                    assertionFailure("could not parse json into expected models")
+                    let error = NSError.internalError(message: "could not parse json into expected models")
+                    handler(nil, error)
                 }
             case .failure(let error):
-                break
+                handler(nil, error as NSError?)
             }
         }
     }

@@ -22,8 +22,14 @@ class SampleATests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let client = APIClient()
+        let expectationA = expectation(description: "temp")
+        client.searchForImages(searchText: "dog") { (images, error) in
+            print("images: \(images)")
+            print("error: \(error)")
+            expectationA.fulfill()
+        }
+        waitForExpectations(timeout: 4.0)
     }
     
     func testPerformanceExample() {

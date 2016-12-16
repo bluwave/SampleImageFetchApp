@@ -3,6 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 def common
 	pod 'Alamofire', '~> 4.2'
 	pod 'SDWebImage', '~> 3.8'
+	pod "ModelMapper"
 end
 
 platform :ios, '10.0'
