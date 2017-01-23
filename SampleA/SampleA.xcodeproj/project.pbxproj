@@ -16,6 +16,9 @@
 		2756665A1E0385B800A36EB4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275666591E0385B800A36EB4 /* APIClient.swift */; };
 		2756665D1E0461ED00A36EB4 /* ImageSearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2756665C1E0461ED00A36EB4 /* ImageSearchModels.swift */; };
 		275666601E0465C800A36EB4 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2756665F1E0465C800A36EB4 /* NSErrorExtensions.swift */; };
+		275666621E046BB300A36EB4 /* SearchAPIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275666611E046BB300A36EB4 /* SearchAPIImageExtension.swift */; };
+		2756666B1E04720D00A36EB4 /* SearchImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275666691E04720D00A36EB4 /* SearchImageCollectionViewCell.swift */; };
+		2756666C1E04720D00A36EB4 /* SearchImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2756666A1E04720D00A36EB4 /* SearchImageCollectionViewCell.xib */; };
 		DA89AA20E61A8EB3EE621CF4 /* Pods_SampleA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCE0BA2E972E56804B864A /* Pods_SampleA.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,9 @@
 		275666591E0385B800A36EB4 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		2756665C1E0461ED00A36EB4 /* ImageSearchModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchModels.swift; sourceTree = "<group>"; };
 		2756665F1E0465C800A36EB4 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtensions.swift; sourceTree = "<group>"; };
+		275666611E046BB300A36EB4 /* SearchAPIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAPIImageExtension.swift; sourceTree = "<group>"; };
+		275666691E04720D00A36EB4 /* SearchImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		2756666A1E04720D00A36EB4 /* SearchImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		56FCE0BA2E972E56804B864A /* Pods_SampleA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8299EF51F8D391469EA23F5E /* Pods-SampleA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleA.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SampleA/Pods-SampleA.debug.xcconfig"; sourceTree = "<group>"; };
 		86788E46968CC9582D4EE979 /* Pods-SampleA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleA.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SampleA/Pods-SampleA.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +114,8 @@
 				2756663F1E03788300A36EB4 /* Assets.xcassets */,
 				275666411E03788300A36EB4 /* LaunchScreen.storyboard */,
 				275666441E03788300A36EB4 /* Info.plist */,
+				275666691E04720D00A36EB4 /* SearchImageCollectionViewCell.swift */,
+				2756666A1E04720D00A36EB4 /* SearchImageCollectionViewCell.xib */,
 			);
 			path = SampleA;
 			sourceTree = "<group>";
@@ -141,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				2756665F1E0465C800A36EB4 /* NSErrorExtensions.swift */,
+				275666611E046BB300A36EB4 /* SearchAPIImageExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +250,7 @@
 			files = (
 				275666431E03788300A36EB4 /* LaunchScreen.storyboard in Resources */,
 				275666401E03788300A36EB4 /* Assets.xcassets in Resources */,
+				2756666C1E04720D00A36EB4 /* SearchImageCollectionViewCell.xib in Resources */,
 				2756663E1E03788200A36EB4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,8 +319,10 @@
 			files = (
 				2756663B1E03788200A36EB4 /* ViewController.swift in Sources */,
 				275666391E03788200A36EB4 /* AppDelegate.swift in Sources */,
+				2756666B1E04720D00A36EB4 /* SearchImageCollectionViewCell.swift in Sources */,
 				275666601E0465C800A36EB4 /* NSErrorExtensions.swift in Sources */,
 				2756665A1E0385B800A36EB4 /* APIClient.swift in Sources */,
+				275666621E046BB300A36EB4 /* SearchAPIImageExtension.swift in Sources */,
 				2756665D1E0461ED00A36EB4 /* ImageSearchModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

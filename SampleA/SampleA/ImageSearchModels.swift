@@ -30,11 +30,11 @@ struct SearchAPIImageResponseModel: Mappable {
 
 struct SearchAPIImage: Mappable {
 //    "id":"31568320821","owner":"108632805@N06","secret":"c334b9fcbc","server":"388","farm":1,"title":"","ispublic":1,"isfriend":0,"isfamily":0}
-    var id: Int = 0
+    var id = ""
     var owner = ""
     var secret = ""
     var server = ""
-    var farm = ""
+    var farm = 0
     var title = ""
     
     public init(map: Mapper) throws {
